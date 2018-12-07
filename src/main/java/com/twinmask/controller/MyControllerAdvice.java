@@ -1,4 +1,4 @@
-package com.twinmask.springmvc;
+package com.twinmask.controller;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

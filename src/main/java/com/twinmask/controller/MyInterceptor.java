@@ -1,4 +1,4 @@
-package com.twinmask.springmvc;
+package com.twinmask.controller;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
