@@ -11,5 +11,6 @@
         <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
     </context:component-scan>
 
+    <!--导入mybatis配置,一直提示找不到包，原因是jar没放在lib文件夹下-->
     <import resource="classpath:spring-mybatis.xml"/>
 </beans>

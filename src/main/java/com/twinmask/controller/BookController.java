@@ -2,8 +2,10 @@ package com.twinmask.controller;
 
 import com.twinmask.entity.Book;
 import com.twinmask.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,17 +17,17 @@ import java.util.List;
 @SessionAttributes(value = "currentUser")
 public class BookController {
 
-    @Resource
+    @Autowired
     BookService bookService;
 
     @RequestMapping(value = "/getBookList")
-    public String getBookList(Model model){
+    public String getBookList(ModelMap model){
         List<Book> bookList=bookService.getAllBooks();
         model.addAttribute("bookList",bookList);
 
         //redirect:
-        model.addAttribute("currentUser","user");
-        model.addAttribute("currentUser",null);
+        model.addAttribute("currentUser","UserSessions");
+        //model.remove("currentUser");
         return "index";
     }
 

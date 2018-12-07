@@ -1,17 +1,18 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Leo
-  Email: jianfengEmail@163.com
-  Date: 2018/11/30
-  Time: 16:56
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
     <title>Index</title>
 </head>
 <body>
 This is index page!
+<br/>
+<br/>
+User:${requestScope.currentUser}
+<br/>
+<br/>
+<c:forEach var="book" items="${bookList}" varStatus="i">
+    ${book.title}<br/>
+</c:forEach>
 </body>
 </html>

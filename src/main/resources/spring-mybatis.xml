@@ -34,7 +34,7 @@
         <!--别名-->
         <property name="typeAliasesPackage" value="com.twinmask.entity"/>
         <!--Sql映射文件-->
-        <property name="mapperLocations" value="classpath*:com/twinmask/dao/*Mapper.xml"/>
+        <property name="mapperLocations" value="classpath:com/twinmask/dao/*Mapper.xml"/>
     </bean>
 
     <!--4.自动扫描对象映射关系-->

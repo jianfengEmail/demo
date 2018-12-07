@@ -16,6 +16,22 @@
         <spring.version>4.3.18.RELEASE</spring.version>
     </properties>
 
+    <!--默认IDEA不会编译src的java目录的xml文件-->
+    <!--所以解决思路：将IDEA maven项目中src源代码下的xml等资源文件编译进classes文件夹-->
+    <build>
+        <resources>
+            <!--拷贝xml文件到classpath下-->
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <!--<include>**/*.properties</include>-->
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -199,16 +215,17 @@
         </dependency>
 
         <!--c3p0连接池-->
+        <!-- https://mvnrepository.com/artifact/c3p0/c3p0 -->
         <dependency>
             <groupId>c3p0</groupId>
             <artifactId>c3p0</artifactId>
             <version>0.9.1.2</version>
         </dependency>
-        <dependency>
-            <groupId>com.mchange</groupId>
-            <artifactId>mchange-commons-java</artifactId>
-            <version>0.2.8</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.mchange</groupId>-->
+            <!--<artifactId>mchange-commons-java</artifactId>-->
+            <!--<version>0.2.8</version>-->
+        <!--</dependency>-->
     </dependencies>
 
 </project>
