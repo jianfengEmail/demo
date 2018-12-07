@@ -2,16 +2,16 @@ package com.twinmask.service;
 
 import com.twinmask.dao.BookDao;
 import com.twinmask.entity.Book;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class BookService {
 
-    @Resource
+    @Autowired
     BookDao bookDao;
 
     public List<Book> getAllBooks(){

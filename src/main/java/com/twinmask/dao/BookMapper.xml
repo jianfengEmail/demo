@@ -4,6 +4,9 @@
     <select id="getAllBooks" resultType="Book">
         select id,title,price,publishDate from books
     </select>
+    <select id="getBookById" resultType="Book">
+        select id,title,price,publishDate from books where id = #{id}
+    </select>
     <insert id="add">
         insert into books(title,price,publishDate) values (#{title},#{price},#{publishDate})
     </insert>

@@ -11,7 +11,7 @@ public class MyControllerAdvice {
     public ModelAndView exceptionHandler(Exception ex){
         ModelAndView mv = new ModelAndView("error");
         mv.addObject("exception",ex);
-        System.out.println("in MyControllerAdvice");
+        System.out.println("In MyControllerAdvice:"+ex.getMessage());
         return mv;
     }
 }
