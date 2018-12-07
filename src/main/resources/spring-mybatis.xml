@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+    <!--1.引入属性文件-->
+    <context:property-placeholder location="classpath:db.properties" />
+
+    <!--2.配置数据源-->
+    <bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${jdbc.driver}" />
+        <property name="jdbcUrl" value="${jdbc.url}" />
+        <property name="user" value="${jdbc.uid}" />
+        <property name="password" value="${jdbc.pwd}" />
+
+        <!-- 当连接池中的连接耗尽的时候c3p0一次同时获取的连接数  -->
+        <property name="acquireIncrement" value="5"></property>
+        <!-- 初始连接池大小 -->
+        <property name="initialPoolSize" value="10"></property>
+        <!-- 连接池中连接最小个数 -->
+        <property name="minPoolSize" value="5"></property>
+        <!-- 连接池中连接最大个数 -->
+        <property name="maxPoolSize" value="20"></property>
+    </bean>
+
+    <!--3.会话工厂-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--数据源-->
+        <property name="dataSource" ref="datasource"/>
+        <!--别名-->
+        <property name="typeAliasesPackage" value="com.twinmask.entity"/>
+        <!--Sql映射文件-->
+        <property name="mapperLocations" value="classpath*:com/twinmask/dao/*Mapper.xml"/>
+    </bean>
+
+    <!--4.自动扫描对象映射关系-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--只会会话工厂，如果当前上下文中只定义了一个该属性可省略-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!--指定要扫描接口的基础包，实现接口-->
+        <property name="basePackage" value="com.twinmask.dao" />
+    </bean>
+
+    <!--5.声明式事务管理-->
+    <bean id="transactionManagers" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="datasource" />
+    </bean>
+    <!--支持注解驱动的事务管理，指定事务管理器-->
+    <tx:annotation-driven transaction-manager="transactionManagers"/>
+    <!--<tx:advice id="txAdvice" transaction-manager="transactionManagers">-->
+        <!--<tx:attributes>-->
+            <!--<tx:method name="get*" read-only="true"/>-->
+            <!--<tx:method name="*"/>-->
+        <!--</tx:attributes>-->
+    <!--</tx:advice>-->
+
+</beans>

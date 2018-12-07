@@ -9,9 +9,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Index</title>
+    <title>Edit</title>
 </head>
 <body>
-This is index page!
+This is edit page!
 </body>
 </html>
