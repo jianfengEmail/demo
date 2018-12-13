@@ -1,6 +1,6 @@
 package com.twinmask.service;
 
-import com.twinmask.dao.BookDao;
+import com.twinmask.dao.BookMapper;
 import com.twinmask.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.List;
 public class BookService {
 
     @Autowired
-    BookDao bookDao;
+    BookMapper bookDao;
 
     public List<Book> getAllBooks(){
         return bookDao.getAllBooks();
@@ -53,5 +53,4 @@ public class BookService {
     public int update(Book book){
         return bookDao.update(book);
     }
-
 }

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <properties resource="db.properties"></properties>
+    <classPathEntry location="${jdbc.driverLocation}" />
+    <context id="context1" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+            <!-- 去除自动生成的注释 -->
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!-- 数据库连接配置 -->
+        <jdbcConnection driverClass="${jdbc.driver}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.uid}"
+                        password="${jdbc.pwd}" />
+
+        <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--生成实体类存放位置-->
+        <javaModelGenerator targetProject="src/main/java" targetPackage="com.twinmask.entity">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--生成映射文件存放位置-->
+        <sqlMapGenerator targetProject="src/main/java" targetPackage="com.twinmask.mapper">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--生成Dao类存放位置-->
+        <javaClientGenerator targetProject="src/main/java" targetPackage="com.twinmask.dao" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+       </javaClientGenerator>
+
+
+        <!--生成对应表及类名-->
+        <table schema="" tableName="books2"
+               enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false"
+               enableUpdateByExample="false" selectByExampleQueryId="false" >
+        </table>
+    </context>
+</generatorConfiguration>

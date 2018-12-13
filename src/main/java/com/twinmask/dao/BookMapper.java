@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface BookDao {
+public interface BookMapper {
 
     public List<Book> getAllBooks();
 
