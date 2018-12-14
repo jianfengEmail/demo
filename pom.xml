@@ -19,9 +19,33 @@
         <log4j.version>2.8.2</log4j.version>
     </properties>
 
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <!-- 默认是本地开发环境 -->
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!--和文件名对应-->
+                <env>dev</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>pro</id>
+            <properties>
+                <!--和文件名对应-->
+                <env>pro</env>
+            </properties>
+        </profile>
+    </profiles>
+
     <!--默认IDEA不会编译src的java目录的xml文件-->
     <!--所以解决思路：将IDEA maven项目中src源代码下的xml等资源文件编译进classes文件夹-->
     <build>
+        <filters>
+            <filter>src/main/resources/env/${env}.properties</filter>
+        </filters>
         <resources>
             <!--部署项目时,拷贝配置文件到classpath下-->
             <resource>
@@ -30,6 +54,9 @@
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
                 </includes>
+                <excludes>
+                    <exclude>env/*</exclude>
+                </excludes>
                 <filtering>true</filtering>
             </resource>
             <!--generator 找不到配置文件，配置如下-->
@@ -39,6 +66,7 @@
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
                 </includes>
+                <filtering>true</filtering>
             </resource>
         </resources>
         <plugins>

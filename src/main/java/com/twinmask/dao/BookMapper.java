@@ -7,13 +7,13 @@ import java.util.List;
 
 public interface BookMapper {
 
-    public List<Book> getAllBooks();
+    List<Book> getAllBooks();
 
-    public Book getBookById(@Param("id")int id);
+    Book getBookById(@Param("id")int id);
 
-    public int add(Book book);
+    int add(Book book);
 
-    public int delete(int id);
+    int delete(int id);
 
-    public int update(Book book);
+    int update(Book book);
 }
