@@ -24,7 +24,7 @@
         </javaTypeResolver>
 
         <!--生成实体类存放位置-->
-        <javaModelGenerator targetProject="src/main/java" targetPackage="com.twinmask.entity">
+        <javaModelGenerator targetProject="src/main/java" targetPackage="com.twinmask.model">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>

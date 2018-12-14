@@ -1,7 +1,7 @@
 package com.twinmask.service;
 
 import com.twinmask.dao.BookMapper;
-import com.twinmask.entity.Book;
+import com.twinmask.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

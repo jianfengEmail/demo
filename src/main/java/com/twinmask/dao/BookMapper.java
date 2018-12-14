@@ -1,6 +1,6 @@
 package com.twinmask.dao;
 
-import com.twinmask.entity.Book;
+import com.twinmask.model.Book;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

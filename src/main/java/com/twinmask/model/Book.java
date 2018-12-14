@@ -1,4 +1,4 @@
-package com.twinmask.entity;
+package com.twinmask.model;
 
 import java.util.Date;
 
